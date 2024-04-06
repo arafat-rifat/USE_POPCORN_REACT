@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "./Components/Navbar";
+import ListBox from "./Components/ListBox";
 
 const tempMovieData = [
   {
@@ -65,30 +66,8 @@ export default function App() {
     <>
       <Navbar movies={movies}/>
       <main className="main">
-        <div className="box">
-          <button
-            className="btn-toggle"
-            onClick={() => setIsOpen1((open) => !open)}
-          >
-            {isOpen1 ? "–" : "+"}
-          </button>
-          {isOpen1 && (
-            <ul className="list">
-              {movies?.map((movie) => (
-                <li key={movie.imdbID}>
-                  <img src={movie.Poster} alt={`${movie.Title} poster`} />
-                  <h3>{movie.Title}</h3>
-                  <div>
-                    <p>
-                      <span>🗓</span>
-                      <span>{movie.Year}</span>
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        
+        <ListBox movies={movies} setMovies={setMovies} isOpen1={isOpen1} setIsOpen1={setIsOpen1} />
 
         <div className="box">
           <button

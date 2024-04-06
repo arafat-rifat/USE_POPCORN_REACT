@@ -1,20 +1,19 @@
 import React from 'react'
-import { useState } from 'react'
 import Search from './Search';
+import Logo from './Logo';
+import NumberOfResult from './NumberOfResult';
 
 const Navbar = ({movies}) => {
    
 
   return (
     <nav className="nav-bar">
-    <div className="logo">
-      <span role="img">🍿</span>
-      <h1>usePopcorn</h1>
-    </div>
+    
+    <Logo/>
+
     <Search />
-    <p className="num-results">
-      Found <strong>{movies.length}</strong> results
-    </p>
+    
+    <NumberOfResult movies={movies}/>
   </nav>
   )
 }
