@@ -1,27 +1,24 @@
-import React from 'react'
-import WatchedSummery from './WatchedSummery'
-import WatchedList from './WatchedList'
+import React, { useState } from "react";
+import WatchedSummery from "./WatchedSummery";
+import WatchedList from "./WatchedList";
 
-const WatchedBox = ({setWatched , watched , isOpen2 , setIsOpen2 , avgImdbRating , avgUserRating , avgRuntime}) => {
+const WatchedBox = ({ watched }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
     <div className="box">
-          <button
-            className="btn-toggle"
-            onClick={() => setIsOpen2((open) => !open)}
-          >
-            {isOpen2 ? "–" : "+"}
-          </button>
-          {isOpen2 && (
-            <>
-            <WatchedSummery watched={watched} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} 
-            avgRuntime={avgRuntime}
-            />
+      <button
+        className="btn-toggle"
+        onClick={() => setIsOpen((open) => !open)}
+      >
+        {isOpen ? "–" : "+"}
+      </button>
+      {isOpen && (
+        <>
+        </>
+      )}
+    </div>
+  );
+};
 
-             <WatchedList watched={watched}/>
-            </>
-          )}
-        </div>
-  )
-}
-
-export default WatchedBox
+export default WatchedBox;

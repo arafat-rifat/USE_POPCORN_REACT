@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import Navbar from "./Components/Navbar";
-import ListBox from "./Components/ListBox";
 import WatchedBox from "./Components/WatchedBox";
 import Logo from "./Components/Logo";
 import Search from "./Components/Search";
 import NumberOfResult from "./Components/NumberOfResult";
+import Main from "./Components/Main";
+import MovieList from "./Components/MovieList";
+import Box from "./Components/Box"
+import WatchedSummery from "./Components/WatchedSummery";
+import WatchedList from "./Components/WatchedList";
 
 const tempMovieData = [
   {
@@ -53,18 +57,9 @@ const tempWatchedData = [
   },
 ];
 
-const average = (arr) =>
-  arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
-
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
-  const [isOpen1, setIsOpen1] = useState(true);
-  const [isOpen2, setIsOpen2] = useState(true);
-
-  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
-  const avgUserRating = average(watched.map((movie) => movie.userRating));
-  const avgRuntime = average(watched.map((movie) => movie.runtime));
 
   return (
     <>
@@ -81,16 +76,24 @@ export default function App() {
 
 
       
-      <main className="main">
+      <Main>
         
-        <ListBox movies={movies} setMovies={setMovies} isOpen1={isOpen1} setIsOpen1={setIsOpen1} />
-         
+        <Box>
 
-          <WatchedBox watched={watched} setWatched={setWatched} isOpen2={isOpen2} setIsOpen2={setIsOpen2} avgImdbRating={avgImdbRating} avgUserRating={avgUserRating} 
-          avgRuntime={avgRuntime}
-          />
+        <MovieList movies={movies}/>
+
+        </Box>
+         
+        <Box>
           
-      </main>
-    </>
+        <WatchedSummery watched={watched}/>
+
+        <WatchedList watched={watched} />
+
+        </Box>
+        
+          
+      </Main>
+      </>
   );
 }
