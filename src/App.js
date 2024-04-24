@@ -1,6 +1,5 @@
 import { Children, useState } from "react";
 import Navbar from "./Components/Navbar";
-import WatchedBox from "./Components/WatchedBox";
 import Logo from "./Components/Logo";
 import Search from "./Components/Search";
 import NumberOfResult from "./Components/NumberOfResult";
@@ -77,12 +76,18 @@ export default function App() {
 
       
       <Main>
-        
+
         <Box>
 
         <MovieList movies={movies}/>
 
         </Box>
+
+
+        {/* Element Props */}
+
+        {/* <Box element={<MovieList movies={movies}/>}/> */}
+
          
         <Box>
           
@@ -91,6 +96,17 @@ export default function App() {
         <WatchedList watched={watched} />
 
         </Box>
+
+         {/* Element Props */}
+
+        {/* <Box element={
+          
+            <>
+                <WatchedSummery watched={watched}/>
+                <WatchedList watched={watched} />
+            </>
+
+        }/> */}
         
           
       </Main>
