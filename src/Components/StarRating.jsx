@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Star from './Star';
 
 
 const containerStyle = {
@@ -9,7 +10,6 @@ const containerStyle = {
 
 const starContainerStyle = {
     display : "flex",
-    gap: "4px",
 };
 
 const textStyle = {
@@ -19,16 +19,20 @@ const textStyle = {
 
 
 const StarRating = ({maxRating = 5}) => {
-
+  
+    const [ rating , setRating] = useState(0);
 
   return (
     <div style={containerStyle}>
       
       <div style={containerStyle}>
-       {Array.from({ length: maxRating}, (_, i) =>(<span>S{i + 1}</span>))}
+       {Array.from({ length: maxRating}, (_, i) =>
+          
+          <Star key={i} onRate/>
+       )}
       </div>
      
-     <p style={textStyle}> 10 </p>
+     <p style={textStyle}> {rating || ""} </p>
 
     </div>
   )
